@@ -1,0 +1,14 @@
+let Nesting = ./Nesting
+
+let Tagged = ./Tagged
+
+let tagInline : forall (a : Type) -> Text -> a -> { nesting : Nesting, field : Text, contents : a }=
+        λ(a : Type)
+      → λ(alternativeFieldName : Text)
+      → λ(contents : a)
+      → { nesting = Nesting.Inline
+        , field = alternativeFieldName
+        , contents = contents
+        }
+
+in  tagInline

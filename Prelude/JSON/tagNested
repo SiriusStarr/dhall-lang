@@ -1,0 +1,20 @@
+let Nesting = ./Nesting
+
+let Tagged = ./Tagged
+
+let tagNested
+    :   ∀(a : Type)
+      → Text
+      → Text
+      → a
+      → { nesting : Nesting, field : Text, contents : a }
+    =   λ(a : Type)
+      → λ(tagFieldName : Text)
+      → λ(contentsFieldName : Text)
+      → λ(contents : a)
+      → { nesting = Nesting.Nested contentsFieldName
+        , field = tagFieldName
+        , contents = contents
+        }
+
+in  tagNested
